@@ -21,6 +21,7 @@ urlpatterns = [
     path('accounts/', include('apps.accounts.urls')),
     path('dashboard/', include('apps.dashboard.urls')),
     path('equipment/', include('apps.equipment.urls')),
+    path('settings/ldap/', include('apps.settings.ldap.urls')),
     
     
 ]

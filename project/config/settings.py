@@ -44,10 +44,19 @@ INSTALLED_APPS = [
     'apps.accounts',
     'apps.dashboard',
     'apps.equipment',
-    # 'apps.settings.ldap',
+    'apps.settings.ldap',
     # 'apps.settings.qrcode',
     
 ]
+
+# 'django_python3_ldap.auth.LDAPBackend',
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'apps.settings.ldap.util.auth.LDAPBackend',
+]
+
+AUTH_USER_MODEL = 'accounts.User'
+
 
 LOGIN_REDIRECT_URL =  'dashboard_url'
 LOGOUT_REDIRECT_URL = 'login'
@@ -138,3 +147,19 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]       
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
+    "loggers": {
+        "apps.settings.ldap": {
+            "handlers": ["console"],
+            "level": "INFO",
+        },
+    },
+}

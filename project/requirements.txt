@@ -1,0 +1,10 @@
+asgiref==3.2.3
+Django==3.0.3
+django-crispy-forms==1.8.1
+django-simple-history==2.8.0
+django-widget-tweaks==1.4.5
+ldap3==2.6.1
+pyasn1==0.4.8
+pytz==2019.3
+six==1.14.0
+sqlparse==0.3.0
