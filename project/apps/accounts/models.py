@@ -16,4 +16,4 @@ class User(AbstractUser):
     history = HistoricalRecords(related_name='history_profile')
 
     def get_absolute_url(self):
-        return reverse("profile_detail_url", kwargs={'username':self.username} )
+        return reverse("user_detail_url", kwargs={'username':self.username} )
