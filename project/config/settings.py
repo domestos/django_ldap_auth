@@ -37,10 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
     #For from bootstrap
     'crispy_forms',
     # For form bootsrap
     'widget_tweaks',
+    'django_tables2',
+    'django_tables2_column_shifter',
     'apps.accounts',
     'apps.dashboard',
     'apps.equipment',

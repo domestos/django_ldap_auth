@@ -3,10 +3,11 @@ from .views import *
 from django.urls import path
 
 urlpatterns = [
+    path('sync_ldap_users', sync_ldap_users , name='sync_ldap_users_url'),
     path('', UsersView.as_view(), name='users_url'),
     path('new_user', NewUserView.as_view(), name='new_user_url'),
     path('<str:username>', UserDetailView.as_view(), name='user_detail_url'),
-    path('sync_ldap_users',sync_ldap_users , name='sync_ldap_users_url'),
+    path('sync_ldap_users', sync_ldap_users , name='sync_ldap_users_url'),
     
 
 

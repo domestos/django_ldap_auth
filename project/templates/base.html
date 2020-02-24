@@ -9,14 +9,17 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	{% block head_link%}  
 	<!-- VENDOR CSS -->
-	<link rel="stylesheet" href="{% static 'css/bootstrap-material-design.min' %}" >
-
+	
 	<link rel="stylesheet" href=" {% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %} ">
 	<link rel="stylesheet" href=" {% static 'assets/vendor/font-awesome/css/font-awesome.min.css' %} ">
 	<link rel="stylesheet" href=" {% static 'assets/vendor/linearicons/style.css' %} ">
 	<link rel="stylesheet" href=" {% static 'assets/vendor/chartist/css/chartist-custom.css' %} ">
 	<!-- MAIN CSS -->
+	
+	<link rel="stylesheet" href="{% static 'css/card-profile.css' %}">
+
 	<link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
+	
 	
 	<!-- GOOGLE FONTS -->
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
@@ -33,16 +36,6 @@
 </head>
 
 <body>
-<style type="text/css">
-   
-.avatar {
-  border: 0.3rem solid rgba(#fff, 0.3);
-  
-  margin-bottom: 1rem;
-  max-width: 9rem;
-
-}
-</style>
 
 	<!-- WRAPPER -->
 	<div id="wrapper">
@@ -436,6 +429,14 @@
 	<script src="	{% static 'assets/vendor/chartist/js/chartist.min.js' %}"></script>
 	<script src="	{% static 'assets/scripts/klorofil-common.js' %}"></script>
 
+
+	<!-- <script src="{% static 'jquery.min.js' %}"></script> {# require #} -->
+    <script src="{% static '/js/bootstrap.min.js' %}"></script>
+
+    <script
+        type="text/javascript"
+        src="{% static 'django_tables2_column_shifter/js/django_tables2_column_shifter.min.js' %}">
+    </script>
 </body>
 
 </html>

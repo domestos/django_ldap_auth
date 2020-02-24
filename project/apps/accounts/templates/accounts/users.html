@@ -1,5 +1,6 @@
 
 {% extends  'base.html' %}
+{% load render_table from django_tables2 %}
 {% load widget_tweaks %}
 {% load crispy_forms_tags %}
 
@@ -49,7 +50,11 @@
 						<div class="panel-body">
 							<a href="{% url 'new_user_url'%}" class="btn btn-success">New User</a>
 							<a href="{% url 'sync_ldap_users_url'%}" class="btn btn-primary">Sync Users</a>
-								<table class="table table-striped">
+								
+							{% render_table table %}
+							
+							
+							<table class="table table-striped">
 										<thead>
 											<tr>
 												<th class="text-center">#</th>

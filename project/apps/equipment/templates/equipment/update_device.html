@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% load widget_tweaks %}
+{% load crispy_forms_tags %}
+
+{% block title %} Equipment {% endblock %}
+
+{% block content %}
+
+
+
+
+
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+
+      <!-- LEFT COLUMN -->
+      <div class="col-md-3">
+        <!-- UPDATE PANEL-->
+        <div class="panel panel-headline">
+          <div class="panel-heading">
+            <h3 class="panel-title"> Update Equipment</h3>
+            <p class="panel-subtitle">Panel to display most important information</p>
+          </div>
+          <div class="panel-body">
+            <!-- UPDATE FORM EQUIPMENT-->
+            <form method="POST" action="{{ equipment.get_absolute_url }}">
+              {% csrf_token %}
+                {{form|crispy}}
+              <!-- {% for field in form %}
+              
+              
+              <p>{{field.label_tag}}</p>
+              {{field}}
+              {% if field.help_text %}
+              <small style="color:darkorchid">{{field.help_text}} </small>
+              {% endif%}
+
+              {% for error in field.errors %}
+              <p style="color:red">{{error}} </p>
+              {% endfor%}
+              {% endfor%} -->
+              <button type="Submit"> Update </button>
+            </form>
+            <!--  END UPDATE FORM EQUIPMENT-->
+          </div>
+        </div>
+        <!-- END UPDATE PANEL-->
+      </div>
+      <!-- END LEFT COLUMN -->
+
+
+
+
+
+      <!-- RIGHT COLUMN -->
+      <div class="col-md-9 ">
+
+        <!-- HISTORY PANEL-->
+        <div class="panel panel-headline">
+          <div class="panel-heading">
+            <h3 class="panel-title">History Equipment</h3>
+            <p class="panel-subtitle">Panel to display most important information</p>
+          </div>
+
+          <div class="panel-body">
+            <!-- HISTORY TABLE-->
+            <table class="table">
+              <tbody>
+                {% for history in history_e %}
+                <tr>
+                  <td>{{history.inventory_number}}</td>
+                  <td>{{history.device_type}}</td>
+                  <td>{{history.model}}</td>
+                  <td>{{history.serial_number}}</td>
+                  <td>{{history.description}}</td>
+                  <td><a href="{% url 'user_detail_url' history.user  %}">{{history.user}}</a></td>
+                  <td>{{history.history_date}}</td>
+                  <td class="td-actions text-right">
+                    <button type="button" rel="tooltip" title="" class="btn-table btn-primary btn-link btn-sm"
+                      data-original-title="Delete from History">
+                      <i class="material-icons">delete</i>
+                    </button>
+
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            <!-- END HISTORY TABLE-->
+          </div>
+        </div>
+        <!-- END HISTORY PANEL-->
+      </div>
+      <!-- END RIGHT COLUMN -->
+
+    </div>
+  </div>
+</div>
+{% endblock %}

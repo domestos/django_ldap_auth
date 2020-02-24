@@ -1,0 +1,33 @@
+{% extends  'base.html' %}
+{% load widget_tweaks %}
+{% load crispy_forms_tags %}
+
+
+{% block content%}
+<div class="main-content">
+	<div class="container-fluid">
+		
+		<div class="panel panel-headline">
+			<div class="panel-heading">
+				<h3 class="panel-title">Add New Equipment </h3>
+				<p class="panel-subtitle">Last sync with ldap server: Oct 14, 2016 - Oct 21, 2016</p>
+			</div>
+			<div class="panel-body">
+					 <!-- NEW FORM EQUIPMENT-->
+					 <form method="POST" action="{{ equipment.get_absolute_url }}">
+						{% csrf_token %}
+						  {{form|crispy}}
+						
+						<button type="Submit"> Add </button>
+					  </form>
+		  
+					  <!--  END NEW FORM EQUIPMENT-->
+
+			</div>
+
+		</div>
+
+	</div>
+</div>
+
+{% endblock %}

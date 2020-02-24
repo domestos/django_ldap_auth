@@ -1,0 +1,26 @@
+<div class="card card-profile">
+    <div class="card-avatar">
+      <a href="#pablo">
+        <img class="img" src="https://xrm.conscensia.com/Organization/User/Avatar/{{user.username}}">
+      </a>
+    </div>
+    <div class="card-body" >
+      <h6 class="card-category text-gray">{{user.department}}</h6>
+      <h4 class="card-title "  >{{user.first_name}} {{user.last_name}} ({{user.username}})</h4>
+    
+      {%if user.is_active %}
+        <h4 class="text-gray">Status: <span class="text-success">Active</span></h4>
+      {%else%}
+        <h4 class="text-gray" >Status: <span class="text-danger">Terminated</span></h4>
+      {% endif %}
+    
+    </div>
+      <div class="card-body">
+        <div class="text-center"><a href="#" class="btn btn-primary">Edit Profile</a></div>
+        <!-- <p class="card-description">
+        
+          <b class="text-danger"> You can't edit user from Active Directory. </b>
+        </p> -->
+
+      </div>
+  </div>

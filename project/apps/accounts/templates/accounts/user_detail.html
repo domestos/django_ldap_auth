@@ -1,228 +1,199 @@
-
 {% extends  'base.html' %}
 {% load widget_tweaks %}
 {% load crispy_forms_tags %}
 
 
-	{% block content%} 
-	<div class="main-content">
-		<div class="container-fluid">
+{% block content%}
+<div class="main-content">
+	<div class="container-fluid">
 
 
-			<div class="panel panel-profile">
-						<div class="clearfix">
-							<!-- LEFT COLUMN -->
-							<div class="profile-left">
+		<div class="row">
 
-							
-
-								<!-- PROFILE DETAIL -->
-								<div class="profile-detail">
-										
-											<img class="avatar rounded-circle" src="https://xrm.conscensia.com/Organization/User/Avatar/{{user.username}}"/>
-											
-												<div class="text-center"><a href="#" class="btn btn-primary">Edit Profile</a></div>
-							
-								<div class="profile-info">
-										<h4 class="heading">Basic Info</h4>
-										<ul class="list-unstyled list-justify">
-											<li>Alias <span>{{user.username}}</span></li>
-											<li>First Name <span>{{user.first_name}}</span></li>
-											<li>Last Name <span>{{user.last_name}}</span></li>
-										
-										</ul>
-									</div>
-									
-									<div class="text-center"><a href="#" class="btn btn-primary">Edit Profile</a></div>
-							
-								</div>
-								<!-- END PROFILE DETAIL -->
-							</div>
-							<!-- END LEFT COLUMN -->
-
-
-
-							<!-- RIGHT COLUMN -->
-							<div class="profile-right">
-								<h4 class="heading">Samuel's Awards</h4>
-								<!-- AWARDS -->
-								<div class="awards">
-									<div class="row">
-										<div class="col-md-3 col-sm-6">
-											<div class="award-item">
-												<div class="hexagon">
-													<span class="lnr lnr-sun award-icon"></span>
-												</div>
-												<span>Most Bright Idea</span>
-											</div>
-										</div>
-										<div class="col-md-3 col-sm-6">
-											<div class="award-item">
-												<div class="hexagon">
-													<span class="lnr lnr-clock award-icon"></span>
-												</div>
-												<span>Most On-Time</span>
-											</div>
-										</div>
-										<div class="col-md-3 col-sm-6">
-											<div class="award-item">
-												<div class="hexagon">
-													<span class="lnr lnr-magic-wand award-icon"></span>
-												</div>
-												<span>Problem Solver</span>
-											</div>
-										</div>
-										<div class="col-md-3 col-sm-6">
-											<div class="award-item">
-												<div class="hexagon">
-													<span class="lnr lnr-heart award-icon"></span>
-												</div>
-												<span>Most Loved</span>
-											</div>
-										</div>
-									</div>
-									<div class="text-center"><a href="#" class="btn btn-default">See all awards</a></div>
-								</div>
-								<!-- END AWARDS -->
-								<!-- TABBED CONTENT -->
-								<div class="custom-tabs-line tabs-line-bottom left-aligned">
-									<ul class="nav" role="tablist">
-										<li class="active"><a href="#tab-bottom-left1" role="tab" data-toggle="tab">Recent Activity</a></li>
-										<li><a href="#tab-bottom-left2" role="tab" data-toggle="tab">Projects <span class="badge">7</span></a></li>
-									</ul>
-								</div>
-								<div class="tab-content">
-									<div class="tab-pane fade in active" id="tab-bottom-left1">
-										<ul class="list-unstyled activity-timeline">
-											<li>
-												<i class="fa fa-comment activity-icon"></i>
-												<p>Commented on post <a href="#">Prototyping</a> <span class="timestamp">2 minutes ago</span></p>
-											</li>
-											<li>
-												<i class="fa fa-cloud-upload activity-icon"></i>
-												<p>Uploaded new file <a href="#">Proposal.docx</a> to project <a href="#">New Year Campaign</a> <span class="timestamp">7 hours ago</span></p>
-											</li>
-											<li>
-												<i class="fa fa-plus activity-icon"></i>
-												<p>Added <a href="#">Martin</a> and <a href="#">3 others colleagues</a> to project repository <span class="timestamp">Yesterday</span></p>
-											</li>
-											<li>
-												<i class="fa fa-check activity-icon"></i>
-												<p>Finished 80% of all <a href="#">assigned tasks</a> <span class="timestamp">1 day ago</span></p>
-											</li>
-										</ul>
-										<div class="margin-top-30 text-center"><a href="#" class="btn btn-default">See all activity</a></div>
-									</div>
-									<div class="tab-pane fade" id="tab-bottom-left2">
-										<div class="table-responsive">
-											<table class="table project-table">
-												<thead>
-													<tr>
-														<th>Title</th>
-														<th>Progress</th>
-														<th>Leader</th>
-														<th>Status</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr>
-														<td><a href="#">Spot Media</a></td>
-														<td>
-															<div class="progress">
-																<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-																	<span>60% Complete</span>
-																</div>
-															</div>
-														</td>
-														<td><img src="assets/img/user2.png" alt="Avatar" class="avatar img-circle"> <a href="#">Michael</a></td>
-														<td><span class="label label-success">ACTIVE</span></td>
-													</tr>
-													<tr>
-														<td><a href="#">E-Commerce Site</a></td>
-														<td>
-															<div class="progress">
-																<div class="progress-bar" role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" style="width: 33%;">
-																	<span>33% Complete</span>
-																</div>
-															</div>
-														</td>
-														<td><img src="assets/img/user1.png" alt="Avatar" class="avatar img-circle"> <a href="#">Antonius</a></td>
-														<td><span class="label label-warning">PENDING</span></td>
-													</tr>
-													<tr>
-														<td><a href="#">Project 123GO</a></td>
-														<td>
-															<div class="progress">
-																<div class="progress-bar" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100" style="width: 68%;">
-																	<span>68% Complete</span>
-																</div>
-															</div>
-														</td>
-														<td><img src="assets/img/user1.png" alt="Avatar" class="avatar img-circle"> <a href="#">Antonius</a></td>
-														<td><span class="label label-success">ACTIVE</span></td>
-													</tr>
-													<tr>
-														<td><a href="#">Wordpress Theme</a></td>
-														<td>
-															<div class="progress">
-																<div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;">
-																	<span>75%</span>
-																</div>
-															</div>
-														</td>
-														<td><img src="assets/img/user2.png" alt="Avatar" class="avatar img-circle"> <a href="#">Michael</a></td>
-														<td><span class="label label-success">ACTIVE</span></td>
-													</tr>
-													<tr>
-														<td><a href="#">Project 123GO</a></td>
-														<td>
-															<div class="progress">
-																<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
-																	<span>100%</span>
-																</div>
-															</div>
-														</td>
-														<td><img src="assets/img/user1.png" alt="Avatar" class="avatar img-circle"> <a href="#">Antonius</a></td>
-														<td><span class="label label-default">CLOSED</span></td>
-													</tr>
-													<tr>
-														<td><a href="#">Redesign Landing Page</a></td>
-														<td>
-															<div class="progress">
-																<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
-																	<span>100%</span>
-																</div>
-															</div>
-														</td>
-														<td><img src="assets/img/user5.png" alt="Avatar" class="avatar img-circle"> <a href="#">Jason</a></td>
-														<td><span class="label label-default">CLOSED</span></td>
-													</tr>
-												</tbody>
-											</table>
-										</div>
-									</div>
-								</div>
-								<!-- END TABBED CONTENT -->
-							</div>
-							<!-- END RIGHT COLUMN -->
-						</div>
-					</div>
-
-
-
+			<div class="col-md-3">
+				<!-- PANEL NO PADDING -->
 				<div class="panel panel-headline">
 					<div class="panel-heading">
-						<h3 class="panel-title">User Profile </h3>
-						<p class="panel-subtitle">Panel to display most important information</p>
+						<h3 class="panel-title">Profile</h3>
+						<!-- <p class="panel-subtitle">Panel to display most important information</p> -->
 					</div>
-
 					<div class="panel-body">
-						<div class="card-body">
-						
-						
-						</div>
+						{% include "accounts/profile_header.html" %}
 					</div>
 				</div>
-		</div>   
-	</div> 
-	{% endblock %}
+				<!-- END PANEL NO PADDING -->
+
+			</div>
+
+
+
+
+
+
+
+			<div class="col-md-9 ">
+				<!-- PANEL HEADLINE -->
+				<div class="panel panel-headline">
+					<div class="panel-heading">
+						<h3 class="panel-title">Panel Headline</h3>
+						<p class="panel-subtitle">Panel to display most important information</p>
+					</div>
+					<div class="panel-body">
+
+
+						<!-- TABBED CONTENT -->
+						<div class="custom-tabs-line tabs-line-bottom left-aligned">
+							<ul class="nav" role="tablist">
+								<li><a class="nav-link" href="#device-bottom" data-toggle="tab">
+										<i class="material-icons">devices</i> Device
+										<div class="ripple-container"></div>
+									</a></li>
+								<li><a class="nav-link" href="#history-device-bottom" data-toggle="tab">
+										<i class="material-icons">compare_arrows</i> History Device
+										<div class="ripple-container"></div>
+									</a></li>
+								<li><a class="nav-link" href="#history-profile-bottom" data-toggle="tab">
+										<i class="material-icons">assignment_ind</i> History Profile
+										<div class="ripple-container"></div>
+									</a></li>
+
+								<!-- <li class="active"><a href="#device-bottom" role="tab" data-toggle="tab">Device </a></li>
+								<li><a href="#history-device-bottom" role="tab" data-toggle="tab">History Device </a></li>
+								<li><a href="#tab-bottom-left3" role="tab" data-toggle="tab">History Profile </a></li> -->
+							</ul>
+						</div>
+
+						<div class="tab-content">
+							<div class="tab-pane fade in active" id="device-bottom">
+								<table class="table project-table">
+									<thead>
+										<tr>
+											<th>inventory_number</th>
+											<th>device_type</th>
+											<th>model</th>
+											<th>serial_number</th>
+											<th>description</th>
+											<th>location</th>
+										</tr>
+									</thead>
+
+									<tbody>
+										{% for equipment in equipments %}
+										<tr>
+											<!-- <td> {{equipment.id}} </td> -->
+											<td> <a href="{{equipment.get_absolute_url}}">{{equipment.inventory_number}} </a></td>	
+											<td> {{equipment.device_type}} </td>
+											<td> {{equipment.model}}</td>
+											<td> {{equipment.serial_number}}</td>
+											<td> {{equipment.description}}</td>
+											<td> {{equipment.location}} </td>
+											<!-- <td class="td-actions text-right">
+												<a href="">
+													<button type="button" rel="tooltip" title=""
+														class="btn btn btn-link btn-sm"
+														data-original-title="View">
+														<i class="material-icons">visibility</i>
+													</button></a>
+											
+											</td> -->
+										</tr>
+										{%endfor%}
+									</tbody>
+								</table>
+							</div>
+
+							<!-- HISTORY DEVICE  -->
+							<div class="tab-pane fade" id="history-device-bottom">
+								<table class="table project-table">
+									<thead>
+										<tr>
+											<th>username</th>
+											<th>first_name</th>
+											<th>last_name</th>
+											<th>department</th>
+											<th>history_date</th>
+										</tr>
+									</thead>
+
+									<tbody>
+										{% for history in history_e %}
+										<tr>
+										  <td><a href="{% url 'update_equipment_url' history.id %}">{{history.inventory_number}}</a></td>
+										  <td>{{history.device_type}}</td>
+										  <td>{{history.model}}</td>
+										  <td>{{history.serial_number}}</td>
+										  <td>{{history.description}}</td>
+										  <td>{{history.history_date}}</td>
+										  <td class="td-actions text-right">
+											<button type="button" rel="tooltip" title="" class="btn-table btn-primary btn-link btn-sm"
+											  data-original-title="Delete from History">
+											  <i class="material-icons">delete</i>
+											</button>
+					  
+										  </td>
+										</tr>
+										{%endfor%}
+									</tbody>
+								</table>
+							</div>
+							<!-- END HISTORY DEVICE  -->
+
+
+
+							<!-- HISTORY PROFILE  -->
+							<div class="tab-pane fade" id="history-profile-bottom">
+								<ul class="list-unstyled activity-timeline">
+									{% for history in history_u %}
+									<li>
+										<i class="fa fa-plus activity-icon"></i>
+										<p>
+											<b> Alias:</b> {{history.username}}
+											<b> / Full name: </b> {{history.first_name}} {{history.last_name}}
+											<b> / Department:</b> {{history.department}}
+											<b> / Enabled:</b> {{ history.enabled}}<span class="timestamp">
+												{{history.history_date}}</span>
+										</p>
+									</li>
+									{% endfor%}
+
+									<!-- <li>
+										<i class="fa fa-comment activity-icon"></i>
+										<p>Commented on post <a href="#">Prototyping</a> <span class="timestamp">2 minutes ago</span></p>
+									</li>
+									<li>
+										<i class="fa fa-cloud-upload activity-icon"></i>
+										<p>Uploaded new file <a href="#">Proposal.docx</a> to project <a href="#">New Year Campaign</a> <span class="timestamp">7 hours ago</span></p>
+									</li>
+									<li>
+										<i class="fa fa-plus activity-icon"></i>
+										<p>Added <a href="#">Martin</a> and <a href="#">3 others colleagues</a> to project repository <span class="timestamp">Yesterday</span></p>
+									</li>
+									<li>
+										<i class="fa fa-check activity-icon"></i>
+										<p>Finished 80% of all <a href="#">assigned tasks</a> <span class="timestamp">1 day ago</span></p>
+									</li> -->
+								</ul>
+
+
+							</div>
+							<!-- END HISTORY PROFILE  -->
+
+
+						</div>
+						<!-- END TABBED CONTENT -->
+
+
+
+
+					</div>
+				</div>
+				<!-- END PANEL HEADLINE -->
+			</div>
+
+		</div>
+
+
+
+	</div>
+</div>
+{% endblock %}
