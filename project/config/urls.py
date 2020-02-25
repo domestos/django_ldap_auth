@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path , include
-
+from apps.equipment.api.v1.router import router as api_equipment
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('apps.accounts.urls')),
@@ -23,5 +23,11 @@ urlpatterns = [
     path('equipment/', include('apps.equipment.urls')),
     path('settings/ldap/', include('apps.settings.ldap.urls')),
     
-    
+
+    # path('', include(router.urls)),
+    path('api/v1/equipment/', include(api_equipment.urls)),
+    # path('api/v2/equipment/', include('apps.equipment.api.v2.urls_app')),
+    # rest web auth
+    path('api-auth/', include('rest_framework.urls',namespace='rest_framework'))
+
 ]

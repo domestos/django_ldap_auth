@@ -15,5 +15,8 @@ class User(AbstractUser):
     ldap_user = models.BooleanField(default=False)
     history = HistoricalRecords(related_name='history_profile')
 
+    def __str__(self):
+        return self.username
+        
     def get_absolute_url(self):
         return reverse("user_detail_url", kwargs={'username':self.username} )

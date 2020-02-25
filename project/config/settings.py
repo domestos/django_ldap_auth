@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
+    'rest_framework',
     #For from bootstrap
     'crispy_forms',
     # For form bootsrap
@@ -51,6 +52,11 @@ INSTALLED_APPS = [
     # 'apps.settings.qrcode',
     
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
 
 # 'django_python3_ldap.auth.LDAPBackend',
 AUTHENTICATION_BACKENDS = [
