@@ -51,9 +51,9 @@ class EquipmentTypeSerializer(serializers.ModelSerializer):
 
 #=================__DIVECE__============================
 class EquipmentSerializer(serializers.ModelSerializer):
-    # user= UserSerializers(many=False, read_only=True)
-    # device_type = EquipmentTypeSerializer(many=False, read_only=True)
-    # location =LocationSerializer(many=False, read_only=True)
+    user= UserSerializers(many=False, read_only=True)
+    device_type = EquipmentTypeSerializer(many=False, read_only=True)
+    location =LocationSerializer(many=False, read_only=True)
 
 
     class Meta:

@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
+    'corsheaders',
     'rest_framework',
     'rest_framework.authtoken',
     'rest_auth',
@@ -54,6 +55,8 @@ INSTALLED_APPS = [
     # 'apps.settings.qrcode',
     
 ]
+
+CORS_ORIGIN_ALLOW_ALL= True
 
 REST_FRAMEWORK = {
     # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
@@ -73,6 +76,7 @@ LOGIN_REDIRECT_URL =  'dashboard_url'
 LOGOUT_REDIRECT_URL = 'login'
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
