@@ -1,24 +1,35 @@
 from rest_framework import serializers
 from apps.accounts.models import User 
 from apps.equipment.models import  Location, EquipmentType, Equipment
+from django.core.serializers.json import Serializer
 
 #=================__PERSON__===========================
+
 class UserSerializers(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields="__all__"
-        # fields = (
-        #     'id',
-        #     'email',
-        #     # 'url',
-        #     'first_name',
-        #     'last_name',
-        #     'department',
-        #     'when_created',
-        #     'when_changed',
-        #     'enabled',
-        # )
+        print(dir(model))
+        # fields="__all__"
+        fields = (
+            'id',
+            'email',
+            'username',
+            'first_name',
+            'last_name',
+            'department',
+            'when_created',
+            'when_changed',
+            'enabled',
+        )
+        def create(self, validated_data):
+            """Nested serializer need to over-ride the create fn to work"""
+            user = User.objects.create( **validated_data)
+            user.set_password(validated_data.get("password"))
+            user.save()
+            return user
+        
     
+
 #=================__LOCATION__=========================
 class LocationSerializer(serializers.ModelSerializer):
     class Meta:
@@ -40,17 +51,57 @@ class EquipmentTypeSerializer(serializers.ModelSerializer):
 
 #=================__DIVECE__============================
 class EquipmentSerializer(serializers.ModelSerializer):
-    user_id= UserSerializers(many=False, read_only=True)
-    type_id = EquipmentTypeSerializer(many=False, read_only=True)
-    location_id =LocationSerializer(many=False, read_only=True)
+    # user= UserSerializers(many=False, read_only=True)
+    # device_type = EquipmentTypeSerializer(many=False, read_only=True)
+    # location =LocationSerializer(many=False, read_only=True)
 
 
     class Meta:
         model = Equipment
-        fields = (
-            'id',
-            'inventory_number',
-            'user_id',
-            'type_id',
-            'location_id'
+        fields = ( "__all__"
+            # 'id',
+            # 'date_of_purchase',
+            # 'inventory_number',
+            # 'user',
+            # 'device_type',
+            # 'location'
+        )
+
+
+
+#=================__DIVECE__============================
+class EquipmentSerializer2(serializers.HyperlinkedModelSerializer):
+    # user= UserSerializers(many=False, read_only=True)
+    # device_type = EquipmentTypeSerializer(many=False, read_only=True)
+    # location =LocationSerializer(many=False, read_only=True)
+    
+
+    class Meta:
+        model = Equipment
+        fields = ( "__all__"
+            # 'id',
+            # 'date_of_purchase',
+            # 'inventory_number',
+            # 'user',
+            # 'device_type',
+            # 'location'
+        )
+
+
+#=================__DIVECE__============================
+class EquipmentSerializer3(serializers.HyperlinkedModelSerializer):
+    user= UserSerializers(many=False, read_only=True)
+    device_type = EquipmentTypeSerializer(many=False, read_only=True)
+    location =LocationSerializer(many=False, read_only=True)
+
+
+    class Meta:
+        model = Equipment
+        fields = ( "__all__"
+            # 'id',
+            # 'date_of_purchase',
+            # 'inventory_number',
+            # 'user',
+            # 'device_type',
+            # 'location'
         )

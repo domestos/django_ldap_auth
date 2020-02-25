@@ -9,8 +9,8 @@ from .serializers import UserSerializers, LocationSerializer, EquipmentTypeSeria
 #=================__PERSON__===========================
 class UserViewSet(ModelViewSet):
     queryset = Profile.objects.all()
-    for q in queryset:
-        print(q.username)
+    # for q in queryset:
+    #     print(q.username)
     serializer_class = UserSerializers
 
 #=================__LOCATION__=========================
