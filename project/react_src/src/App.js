@@ -24,8 +24,9 @@ class App extends React.Component {
 
   constructor() {
     super();
-    this.state = {};
+    // this.state = {};
     this.state = {
+      loading: true,
       globalFilter: null
     };
     this.carservice = new CarService();
@@ -57,7 +58,18 @@ class App extends React.Component {
     </div>;
   }
   componentDidMount() {
-    this.carservice.getCarsSmall().then(data => this.setState({ cars: data }));
+    setTimeout(() => {
+      this.carservice.getCarsSmall().then(data => {
+         
+          this.setState({
+              // totalRecords: data.length,
+              cars: data,
+              loading: false
+          });
+      });
+  }, 1000);
+
+    // this.carservice.getCarsSmall().then(data => this.setState({ cars: data }));
   }
 
   render() {
@@ -89,7 +101,7 @@ class App extends React.Component {
       selectionMode="multiple" 
       
       selection={this.state.selectedCars} onSelectionChange={e => this.setState({selectedCars: e.value})} footer={this.displaySelection(this.state.selectedCars)}
-
+      loading={this.state.loading}
       ref={(el) => this.dt = el} value={this.state.cars} paginator={true} rows={10} header={header}
       globalFilter={this.state.globalFilter} emptyMessage="No records found"
        >
