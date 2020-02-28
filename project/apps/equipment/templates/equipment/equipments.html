@@ -1,8 +1,10 @@
 {% extends  'base.html' %}
 {% load widget_tweaks %}
 {% load crispy_forms_tags %}
-
-
+{% load bootstrap3 %}
+{% load render_table from django_tables2 %}
+{% load widget_tweaks %}
+{% load static %}
 {% block content%}
 <div class="main-content">
   <div class="container-fluid">
@@ -19,8 +21,15 @@
 
 
         <div class="panel-footer">
-          <div class="row">
 
+
+          <div class="row">
+            {% if filter %}
+            <form action="" method="get" class="form form-inline">
+              {% bootstrap_form filter.form layout='inline' %}
+              {% bootstrap_button 'filter' %}
+            </form>
+            {% endif %}
           </div>
         </div>
       </div>
@@ -31,41 +40,45 @@
     <div class="panel panel-headline">
       <div class="panel-heading">
         <h3 class="panel-title">Users</h3>
-        <p class="panel-subtitle">Last sync with ldap server: Oct 14, 2016 - Oct 21, 2016</p>
+        <p class="panel-subtitle">
+          <b> <a href="" class="selectAll  bg-secondary text-success"> </a> </b>
+          <b> <a href="" class="clearSelected  bg-secondary text-danger"> </a> </b>
+        </p>
       </div>
       <div class="panel-body">
 
-        <a class=" float-right" href="{% url 'new_equipment_url' %}"> <input type="Submit" class="btn btn-success" name="add_device"
-            value="Add Device"></a>
         <div class="card-body">
+          <div id="form_card" class="card-panel col s12">
+            <form method="POST" action="{% url 'equipment_action_url' %}">
+              <div class="float-lg-left  col-md-10">
+                <div class=" col-md-2">
+                  <select class="form-control" name="action" id="change_select">
+                    <option value="">----------</option>
+                    <option value="print_qrcode">Preint QR-Code</option>
+                    <option value="delete">Delete</option>
+                  </select>
 
+                </div>
+                <input class="btn btn-primary" id="submit_select" type="submit" value="Применить">
+              </div>
+              <br>
+              {% csrf_token %}
 
-          <table class="table">
-            {% for equipment in equipments %}
-            <tbody>
-              <tr>
-                <td> {{equipment.id}} </td>
-                <td> {{equipment.inventory_number}} </td>
-                <td> {{equipment.user}}</td>
-                <td> {{equipment.location}}</td>
-                <td> {{equipment.device_type}}</td>
-                <td class="td-actions text-right">
-
-                  <a href="{{ equipment.get_absolute_url}}"><button type="button" rel="tooltip" title="" class="btn-table  btn-primary btn-link btn-sm"
-                      data-original-title="Edit">
-                      <i class="material-icons">edit</i>
-                    </button></a>
-                </td>
-              </tr>
-
-              {% endfor %}
-            </tbody>
-          </table>
-
+              {% render_table table %}
+            </form>
+          </div>
         </div>
+
 
       </div>
 
     </div>
+
   </div>
-  {% endblock %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ block.super }}
+<script src="{% static '/js/quipment/checkBox_select_row.js' %}"></script>
+{% endblock %}

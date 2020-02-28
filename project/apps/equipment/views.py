@@ -3,12 +3,55 @@ from django.views import View
 from .models import Equipment
 from .forms import NewDeviceForm
 from django.shortcuts import get_object_or_404
+from .filters import EquipmentFilter
+from .tables import EquipmentTable
 
+from django_tables2.views import SingleTableMixin
+from django_tables2 import SingleTableView
+from django_filters.views import FilterView
+
+from django.contrib.sessions.models import Session
+from django.contrib.sessions.backends.db import SessionStore
 # Create your views here.
-class EquipmentView(View):
-    def get(self, request):
-        equipments = Equipment.objects.all()
-        return render(request, 'equipment/equipments.html',{'equipments':equipments})
+class EquipmentView(SingleTableMixin, FilterView):
+    model = Equipment
+    table_class = EquipmentTable   
+    
+    filterset_class = EquipmentFilter
+    template_name = 'equipment/equipments.html'
+
+
+def  equipment_action(request):
+    print("RUN ACTION")
+    # print(request.COOKIES )
+    selected_rows=request.COOKIES.get('selected')
+    # print(selected_rows)
+    action = request.POST.get('action')
+    # arr = [request.POST.get(key) for key in request.POST.keys() if u'check' in key]
+  
+    # print(request.POST)
+    # sqs = Equipment.objects.filter(pk=selected_rows)
+    # print(sqs)
+    if action == u'print_qrcode':
+        #  rows_updated = qs.update(status=u'done', doneDateTime=datetime.now())
+        print("You selected -",  len(selected_rows.split(',')), " rows")
+        # for row in selected_rows:
+        #     print(row)
+
+
+        msg = u'Количество заявок, отмеченных как исполненные - {}.'
+        print(msg)
+    # elif action == u'cancel':
+    #     rows_updated = qs.update(status=u'cancel', doneDateTime=None)
+    #     msg = u'Количество заявок, отмеченных как отменённые - {}.'
+    return redirect('equipment_url')
+
+
+
+
+    # def get(self, request):
+    #     equipments = Equipment.objects.all()
+    #     return render(request, 'equipment/equipments.html',{'equipments':equipments})
 
 class NewEquipmentView(View):
 

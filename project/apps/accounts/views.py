@@ -6,18 +6,47 @@ from .filters import OrderFilter
 from apps.equipment.models import Equipment
 from apps.accounts.forms import NewUserForm
 from .tables import PersonTable
+from django.views.generic import ListView
+
+from django_tables2.views import SingleTableMixin
+from django_tables2 import SingleTableView
+from django_filters.views import FilterView
+
 # Create your views here.
 
-class UsersView(View):
-    def get(self, request):       
-        users=User.objects.all()
+# class UsersView(View):
+#     def get(self, request):       
+#         users=User.objects.all()
        
-        my_filter = OrderFilter(request.GET, queryset=users)
-        users = my_filter.qs
+#         my_filter = OrderFilter(request.GET, queryset=users)
+#         users = my_filter.qs
 
-        table = PersonTable(users)
-        table.paginate(page=request.GET.get("page", 1), per_page=25)
-        return render(request, 'accounts/users.html',{'users':users, 'my_filter':my_filter, 'table':table} )
+#         table = PersonTable(users)
+#         # table.order_by = 'id'
+#         table.paginate(page=request.GET.get("page", 1), per_page=10)
+#         return render(request, 'accounts/users.html',{'users':users, 'my_filter':my_filter, 'table':table} )
+
+
+
+class UsersView(SingleTableMixin, FilterView):
+    model = User
+    table_class = PersonTable
+   
+    filterset_class = OrderFilter
+    template_name = 'accounts/users.html'
+
+   
+    # def get(self, request):       
+    #     users=User.objects.all()
+       
+    #     my_filter = OrderFilter(request.GET, queryset=users)
+    #     users = my_filter.qs
+
+    #     table = PersonTable(users)
+    #     # table.order_by = 'id'
+    #     table.paginate(page=request.GET.get("page", 1), per_page=10)
+    #     return render(request, 'accounts/users.html',{'users':users, 'my_filter':my_filter, 'table':table} )
+
 
 
 class UserDetailView(View):

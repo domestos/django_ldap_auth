@@ -28,6 +28,6 @@ urlpatterns = [
     path('api/v1/equipment/', include(api_equipment.urls)),
     # path('api/v2/equipment/', include('apps.equipment.api.v2.urls_app')),
     # rest web auth
-    path('api-auth/', include('rest_framework.urls',namespace='rest_framework'))
+    # path('api-auth/', include('rest_framework.urls',namespace='rest_framework'))
 
 ]
