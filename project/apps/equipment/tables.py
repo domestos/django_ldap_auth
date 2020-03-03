@@ -5,7 +5,7 @@ from django_tables2.utils import Accessor, AttributeDict
 from django.utils.html import format_html
 from django.views.generic import ListView
 
-
+from django_tables2.export.export import TableExport
 from .models import Equipment
 
 from django.db.models.functions import Length
@@ -37,7 +37,6 @@ class EquipmentTable(ColumnShiftTable):
     #         return mark_safe('<input class="nameCheckBox" name="name[]" type="checkbox" checked/>')
     #     else:   
     #         return mark_safe('<input class="nameCheckBox" name="name[]" type="checkbox"/>')
-    
     class Meta:
         model = Equipment
         template_name = "django_tables2/bootstrap.html"

@@ -2,6 +2,7 @@
 {% load widget_tweaks %}
 {% load crispy_forms_tags %}
 {% load bootstrap3 %}
+{% load export_url from django_tables2 %}
 {% load render_table from django_tables2 %}
 {% load widget_tweaks %}
 {% load static %}
@@ -47,25 +48,45 @@
       </div>
       <div class="panel-body">
 
+
+
         <div class="card-body">
+
+
           <div id="form_card" class="card-panel col s12">
+
+
+
             <form method="POST" action="{% url 'equipment_action_url' %}">
-              <div class="float-lg-left  col-md-10">
-                <div class=" col-md-2">
-                  <select class="form-control" name="action" id="change_select">
-                    <option value="">----------</option>
-                    <option value="print_qrcode">Preint QR-Code</option>
-                    <option value="delete">Delete</option>
-                  </select>
 
+
+              <div class="row ">
+                <div class="col col-md-4  ">
+                  <div class="input-group">
+                    <select class="form-control" name="action" id="change_select">
+                      <option value="">----------</option>
+                      <option value="print_qrcode">Preint QR-Code</option>
+                      <option value="delete">Delete</option>
+                    </select>
+                    <span class="input-group-btn"><button type="submit" id="submit_select"
+                        class="btn btn-primary">Go</button></span>
+                  </div>
                 </div>
-                <input class="btn btn-primary" id="submit_select" type="submit" value="Применить">
-              </div>
-              <br>
-              {% csrf_token %}
+                <div class="col  text-right  ">
+                  Download
+                  {% for format in view.export_formats %} 
+                  <span class="p-2 bd-highlight"><a href="{% export_url format %}">
+                      <code>.{{ format }}</code></a></span>
+                  {% endfor %}
+                </div>
 
-              {% render_table table %}
+              </div>
+              <div class="col-12 px-md-5 ">
+                {% csrf_token %}
+                {% render_table table %}
+              </div>
             </form>
+
           </div>
         </div>
 

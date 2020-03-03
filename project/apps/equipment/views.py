@@ -6,20 +6,30 @@ from django.shortcuts import get_object_or_404
 from .filters import EquipmentFilter
 from .tables import EquipmentTable
 
+
+import django_tables2 as tables
+from django_tables2.export.views import ExportMixin
 from django_tables2.views import SingleTableMixin
 from django_tables2 import SingleTableView
 from django_filters.views import FilterView
 
+
 from django.contrib.sessions.models import Session
 from django.contrib.sessions.backends.db import SessionStore
 # Create your views here.
-class EquipmentView(SingleTableMixin, FilterView):
+class EquipmentView(ExportMixin, SingleTableMixin, FilterView):
     model = Equipment
     table_class = EquipmentTable   
-    
+    # export_trigger_param ='xls'
+    export_formats = ['csv','json' ,'xlsx']
+    export_name ="equipments"
     filterset_class = EquipmentFilter
     template_name = 'equipment/equipments.html'
+    exclude_columns = ("selected_rows", )
+    
+    
 
+    
 
 def  equipment_action(request):
     print("RUN ACTION")
