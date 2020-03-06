@@ -14,19 +14,18 @@ from django.db.models.functions import Length
 
 class PersonTable(ColumnShiftTable):
     username = tables.LinkColumn(order_by="username")
-    action =tables.LinkColumn(orderable=False)
+    # action =tables.LinkColumn(orderable=False)
     
     # when_created = tables.DateTimeColumn(format='d/m/Y h:m' , order_by="when_created")
     # when_changed= tables.DateTimeColumn(format='d/m/Y h:m')
     # check = MaterializeCheckColumn(accessor='id')
-    # actions = tables.Column(orderable=False)
-    
+  
     class Meta:
         model = User
         template_name = "django_tables2/bootstrap.html"
         # add class="paleblue" to <table> tag
         attrs = {}
-        fields = ('id', 'username', 'first_name', 'last_name', 'email', 'department', 'when_created','when_changed', 'enabled')
+        fields = ('id', 'username', 'first_name', 'last_name', 'email', 'department', 'when_created','when_changed', 'is_active')
         # per_page: 10
     
     # def order_username(self, queryset, is_descending):
