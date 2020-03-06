@@ -76,7 +76,7 @@
 
 .btn-link {
   font-weight: 400;
-  color: #9c27b0;
+  color: #286090;
   background-color: transparent;
 }
 
@@ -130,7 +130,7 @@
 
 .btn-table.btn-primary.btn-link {
   background-color: transparent;
-  color: #9c27b0;
+  color: #286090;
   box-shadow: none;
 }
 
@@ -138,7 +138,7 @@
 .btn-table.btn-primary.btn-link:focus,
 .btn-table.btn-primary.btn-link:active {
   background-color: transparent;
-  color: #9c27b0;
+  color: #286090;
 }
 
 

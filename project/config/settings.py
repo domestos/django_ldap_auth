@@ -31,7 +31,6 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,7 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'rest_auth',
-    #For from bootstrap
+    # For from bootstrap
     'crispy_forms',
     # For form bootsrap
     'widget_tweaks',
@@ -54,14 +53,15 @@ INSTALLED_APPS = [
     'apps.equipment',
     'apps.settings.ldap',
     # 'apps.settings.qrcode',
-    
+
 ]
 
-CORS_ORIGIN_ALLOW_ALL= True
+CORS_ORIGIN_ALLOW_ALL = True
 
 REST_FRAMEWORK = {
-    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    # 'PAGE_SIZE': 10
+    # 'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 20
 }
 
 # 'django_python3_ldap.auth.LDAPBackend',
@@ -73,7 +73,7 @@ AUTHENTICATION_BACKENDS = [
 AUTH_USER_MODEL = 'accounts.User'
 
 
-LOGIN_REDIRECT_URL =  'dashboard_url'
+LOGIN_REDIRECT_URL = 'dashboard_url'
 LOGOUT_REDIRECT_URL = 'login'
 
 MIDDLEWARE = [
@@ -92,7 +92,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [ os.path.join(BASE_DIR, 'templates') ],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -162,7 +162,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
-]       
+]
 
 LOGGING = {
     "version": 1,
@@ -179,7 +179,7 @@ LOGGING = {
         },
     },
 }
-#TABLE 2 
+# TABLE 2
 TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.auth.context_processors.auth",
     "django.core.context_processors.debug",

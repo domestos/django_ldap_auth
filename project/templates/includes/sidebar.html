@@ -2,18 +2,18 @@
 			<div class="sidebar-scroll">
 				<nav>
 					<ul class="nav">
-						<li><a href="{% url 'dashboard_url' %}" class="active"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
+						<li><a href="{% url 'dashboard_url' %}" class="{% if '/dashboard/' in request.path %}active{% endif %}"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
 						
-						<li><a href="{% url 'equipment_url' %}" class=""><i class="lnr lnr-laptop-phone"></i> <span>Equipment</span></a></li>
-						<li><a href=" {% url 'users_url' %}  " class=""><i class="material-icons">person</i> <span>Users</span></a></li>
+						<li><a href="{% url 'equipment_url' %}" class="{% if  '/equipment/' in request.path  %}active{% endif %} "><i class="lnr lnr-laptop-phone"></i> <span>Equipment</span></a></li>
+						<li><a href=" {% url 'users_url' %}  " class="{% if  '/accounts/' in  request.path  %}active{% endif %} "><i class="material-icons">person</i> <span>Users</span></a></li>
 
 						<li>
-							<a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-cog"></i> <span>Settings</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+							<a href="#subPages" data-toggle="collapse" class="{% if  '/settings/' in request.path  %}active{% endif %}  collapsed"><i class="lnr lnr-cog"></i> <span>Settings</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="subPages" class="collapse ">
 								<ul class="nav">
-									<li><a href="{% url 'ldap_config_url' %}" class="">LDAP</a></li>
+									<li><a href="{% url 'ldap_config_url' %}" class="{% if  '/settings/ldap' in request.path  %}active{% endif %}">LDAP</a></li>
 								
-									<li><a href="page-lockscreen.html" class="">QR-CODE</a></li>
+									<li><a href="page-lockscreen.html" class="{% if  '/settings/qrcode' in request.path  %}active{% endif %}">QR-CODE</a></li>
 								</ul>
 							</div>
 						</li>

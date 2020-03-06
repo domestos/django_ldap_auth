@@ -81,7 +81,7 @@ class Connection():
         try:
             # print(user_fields)
             print("I'll search the user: ", user_fields['username'])
-            user = User.objects.get(username=user_fields['username'])
+            user = User.objects.get(username__iexact=user_fields['username'])
             status_update=False
             
             for key, value in user_fields.items():
@@ -109,6 +109,7 @@ class Connection():
         else:
             return None
 
+    """ HAS BUGE """
     def sync_users(self, filter, is_active):
         print('class Connection():::sync_users() method called') 
         ldap_users = self.__request_to_ldap(filter)
@@ -167,8 +168,7 @@ class ConnectManager():
             logger.warning("LDAP bind failed: {ex}".format(ex=ex))
             return None        
         # ==================================
-      
-      
+           
     def __exit__(self, exc_type, exc_value, exc_traceback): 
         print('__exit__ method called') 
         if self.connect != None:
@@ -205,9 +205,9 @@ def test_connect():
     
     with ConnectManager(username,password,ldap_url,base_dn) as c:
         if c is None:
-            return None
+            return False
         return True
-    return None
+    return False
 
 # === SYNC USERS Method==============================================
 def sync_users():
@@ -229,8 +229,8 @@ def sync_users():
         disabled_users=c.sync_users(filter_for_disabled_user, is_active=False)
         users = enabled_users + disabled_users
         # print(users)
-        return  users
-    return None
+        # return  users
+    # return None
 
 def get_raw_username(domain_and_username):
     """  Return domain name    """

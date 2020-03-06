@@ -6,7 +6,7 @@ from django.shortcuts import get_object_or_404
 from .filters import EquipmentFilter
 from .tables import EquipmentTable
 
-
+from django.contrib import messages
 import django_tables2 as tables
 from django_tables2.export.views import ExportMixin
 from django_tables2.views import SingleTableMixin
@@ -96,3 +96,10 @@ class UpdateEquipmentView(View):
         else:
             return render(request, 'equipment/update_device.html',  {'form':bound_form})
 
+
+class DeleteEquipmentHistory(View):
+    def get(self, request, e_pk, h_pk):
+        history_e = Equipment.history.filter(pk=h_pk)
+        if  history_e.delete():
+                messages.success(request, "History record was deleted.", extra_tags='alert-success')
+        return redirect('update_equipment_url', e_pk)

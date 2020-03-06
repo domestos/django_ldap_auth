@@ -75,7 +75,17 @@ function cencelSelected(){
 
 
 $(document).ready(function () {
+    console.log(getCookie(cookie_name))
+    var all =getCookie(cookie_name)
+   
     // display checkboxes according to selected varids in session storage  
+    if ( all =='All') {
+        console.log('Selected ALL')
+    }
+
+
+    // console.log(getCookie(cookie_name))
+
 
     display_checkBoxStatus()
     // save/remove checked/unchecked varid in session storage  

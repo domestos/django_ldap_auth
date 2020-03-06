@@ -23,8 +23,7 @@ class LdapConfig(models.Model):
 
     def decrypt_pass(self, hash_pass):
         raw_pass = signing.loads(hash_pass)
-        raw_pass = (raw_pass['password']).encode('utf-8').decode("utf-8")
-    
+        raw_pass = (raw_pass['password']).encode('utf-8').decode("utf-8")    
         return raw_pass
 
 

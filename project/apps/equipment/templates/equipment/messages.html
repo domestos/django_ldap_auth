@@ -1,0 +1,13 @@
+{% if messages %}
+<ul class="messages">
+        {% for message in messages %}
+
+        <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                aria-hidden="true">×</span></button>
+                <i class="fa fa-check-circle"></i> {{ message }}
+        </div>
+        <!-- <div id="toast-container" class="toast-top-right"><div class="toast toast-info" aria-live="polite" style="display: block;"><button type="button" class="toast-close-button" role="button">×</button><div class="toast-message">{{ message.tags }}<a href="#">this link</a></div></div></div> -->
+        {% endfor %}
+</ul>
+{% endif %}

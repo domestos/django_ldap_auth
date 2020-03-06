@@ -19,11 +19,7 @@
         </div>
       </div>
       <div class="panel-body no-padding" style="display: block;">
-
-
         <div class="panel-footer">
-
-
           <div class="row">
             {% if filter %}
             <form action="" method="get" class="form form-inline">
@@ -56,11 +52,15 @@
           <div id="form_card" class="card-panel col s12">
 
 
+          
 
             <form method="POST" action="{% url 'equipment_action_url' %}">
 
 
               <div class="row ">
+
+
+
                 <div class="col col-md-4  ">
                   <div class="input-group">
                     <select class="form-control" name="action" id="change_select">
@@ -72,12 +72,14 @@
                         class="btn btn-primary">Go</button></span>
                   </div>
                 </div>
+                <a href="{% url 'new_equipment_url'%}" class="btn btn-success">New Equpment</a>
                 <div class="col  text-right  ">
                   Download
-                  {% for format in view.export_formats %} 
+                  {% for format in view.export_formats %}
                   <span class="p-2 bd-highlight"><a href="{% export_url format %}">
                       <code>.{{ format }}</code></a></span>
                   {% endfor %}
+
                 </div>
 
               </div>
@@ -85,6 +87,8 @@
                 {% csrf_token %}
                 {% render_table table %}
               </div>
+
+
             </form>
 
           </div>

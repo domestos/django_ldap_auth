@@ -15,7 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path , include
+from django.conf.urls import handler404
 from apps.equipment.api.v1.router import router as api_equipment
+
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('apps.accounts.urls')),
@@ -31,3 +35,5 @@ urlpatterns = [
     # path('api-auth/', include('rest_framework.urls',namespace='rest_framework'))
 
 ]
+
+handler404 = 'apps.accounts.views.view_404'

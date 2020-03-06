@@ -1,33 +1,55 @@
-
 {% extends  'base.html' %}
 {% load widget_tweaks %}
 {% load crispy_forms_tags %}
 
 
-	{% block content%} 
-	<div class="main-content">
-		<div class="container-fluid">
-		
-	
-						<!-- PANEL lDAP CONFIG -->
-							<div class="panel panel-headline">
-								<div class="panel-heading">
-									<h3 class="panel-title">LDAP settings </h3>
-									<p class="panel-subtitle">Panel to display most important information</p>
-								</div>
-								<div class="panel-body">
-									<div class="card-body">	
-										<form action="" method="POST">
-											{% csrf_token %}
-											{{forms |crispy}}
-											<button type="submit" name="seve_ldap_config_btn" class="btn btn-success">save</button>
-											<a href="{% url 'ldap_test_connect_url' %}"><button type="Submit"class="btn btn-info" name="test_connect_btn" value="Test Connect" >Test Connect</button></a>	
-										</form>
-										
-									</div>
-								</div>
-							</div>
-							<!-- END PANEL lDAP CONFIG-->
+{% block content%}
+
+<div class="main-content">
+	<div class="container-fluid">
+
+
+		<!-- PANEL lDAP CONFIG -->
+		<div class="panel panel-headline">
+			<div class="panel-heading">
+				<h3 class="panel-title">LDAP settings </h3>
+				<p class="panel-subtitle">Panel to display most important information</p>
+				{% if messages %}
+				<ul class="messages">
+					{% for message in messages %}
+
+					<div class="alert {{ message.tags }} alert-dismissible"
+						role="alert">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+								aria-hidden="true">×</span></button>
+						<i class="fa fa-check-circle"></i> {{ message }}
 					</div>
-							</div>
-	{% endblock %}
+
+
+					<!-- <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li> -->
+
+
+
+					<!-- <div id="toast-container" class="toast-top-right"><div class="toast toast-info" aria-live="polite" style="display: block;"><button type="button" class="toast-close-button" role="button">×</button><div class="toast-message">{{ message.tags }}<a href="#">this link</a></div></div></div> -->
+					{% endfor %}
+				</ul>
+				{% endif %}
+
+			</div>
+			<div class="panel-body">
+				<div class="card-body">
+					<form action="" method="POST">
+						{% csrf_token %}
+						{{forms |crispy}}
+						<button type="submit" name="seve_ldap_config_btn" class="btn btn-success">save</button>
+						<a href="{% url 'ldap_test_connect_url' %}"><span type="" class="btn btn-info"
+								name="test_connect_btn" value="Test Connect">Test Connect</span></a>
+					</form>
+
+				</div>
+			</div>
+		</div>
+		<!-- END PANEL lDAP CONFIG-->
+	</div>
+</div>
+{% endblock %}

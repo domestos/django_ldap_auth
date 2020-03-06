@@ -31,6 +31,7 @@ class MaterializeCssCheckboxColumn(tables.CheckBoxColumn):
 
 class EquipmentTable(ColumnShiftTable):
     inventory_number = tables.LinkColumn()
+    user= tables.LinkColumn()
     selected_rows=tables.CheckBoxColumn(accessor='pk',attrs = { "th__input": {"onclick": "toggle(this)"}}, orderable=False)
     # def render_selected(self,record):    
     #     if record.selected:

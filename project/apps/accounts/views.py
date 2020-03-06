@@ -80,3 +80,7 @@ def sync_ldap_users(request):
     print("RUN SYNC")
     sync_users()
     return redirect('users_url')
+
+
+def view_404(request,  *args, **kwargs):
+    return render(request, 'accounts/page_404.html')

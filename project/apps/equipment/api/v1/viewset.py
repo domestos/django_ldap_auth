@@ -27,8 +27,9 @@ class EquipmentTypeViewSet(ModelViewSet):
 class EquipmentViewSet(ModelViewSet):
     queryset = Equipment.objects.all()
     serializer_class = EquipmentSerializer
-    # filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
-    search_fields = ['inventory_number', 'person_id__fname']
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
+    search_fields = ['inventory_number', 'user__username']
+    # filterset_fields = ['inventory_number']
     # filter_class = DeviceFilter
        
    
