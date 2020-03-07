@@ -18,7 +18,7 @@ class Command(BaseCommand):
         Profile.objects.all().delete()
       
         try:
-            connection = mysql.connector.connect(host='uasrv63.csia.net',
+            connection = mysql.connector.connect(host='192.168.30.63',
                                                  database='inventory_db',
                                                  user='inventory',
                                                  password='C$ia2o16')

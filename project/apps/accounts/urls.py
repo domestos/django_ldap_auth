@@ -1,14 +1,14 @@
 from django.contrib.auth import views
 from .views import *
 from django.urls import path
-
+from django.conf.urls import include, url
 urlpatterns = [
     path('sync_ldap_users', sync_ldap_users , name='sync_ldap_users_url'),
     path('', UsersView.as_view(), name='users_url'),
     path('new_user', NewUserView.as_view(), name='new_user_url'),
     path('<str:username>', UserDetailView.as_view(), name='user_detail_url'),
     path('sync_ldap_users', sync_ldap_users , name='sync_ldap_users_url'),
-    
+    url(r'^select2/', include('django_select2.urls')),
 
 
     

@@ -44,7 +44,7 @@ class EquipmentTable(ColumnShiftTable):
        
         attrs = {}
         fields = ('selected_rows','inventory_number','device_type',    'model', 'serial_number', 'part_number','date_of_purchase','host_name',
-         'memory','qr_id', 'state','user','location','description','status_inventory')
+         'memory','qr_id', 'state','user', 'user__department','location','description','status_inventory')
         per_page=100
     
     # def order_username(self, queryset, is_descending):

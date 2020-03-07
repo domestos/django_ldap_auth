@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'django_tables2',
     'django_tables2_column_shifter',
+    'django_select2',
     'apps.accounts',
     'apps.dashboard',
     'apps.equipment',

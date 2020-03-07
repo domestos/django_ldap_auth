@@ -30,6 +30,7 @@ class EquipmentFilter(django_filters.FilterSet):
             'memory': ['icontains'],
             'state': ['icontains'],
             'user__username': ['icontains'],
+            'user__department': ['icontains'],
         
         }
 

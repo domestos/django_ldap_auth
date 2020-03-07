@@ -9,7 +9,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	{% block head_link%}  
 	<!-- VENDOR CSS -->
-	
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+
 	<link rel="stylesheet" href=" {% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %} ">
 	<link rel="stylesheet" href=" {% static 'assets/vendor/font-awesome/css/font-awesome.min.css' %} ">
 	<link rel="stylesheet" href=" {% static 'assets/vendor/linearicons/style.css' %} ">
@@ -32,6 +33,7 @@
 	<!-- ICONS -->
 	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
 	<link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
+	{{ form.media.css }}
 	 {% endblock %}
 </head>
 
@@ -430,14 +432,23 @@
 	<script src="	{% static 'assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js' %}"></script>
 	<script src="	{% static 'assets/vendor/chartist/js/chartist.min.js' %}"></script>
 	<script src="	{% static 'assets/scripts/klorofil-common.js' %}"></script>
-
-
+	
+{{ form.media.js }}
 	<!-- <script src="{% static 'jquery.min.js' %}"></script> {# require #} -->
     <script src="{% static '/js/bootstrap.min.js' %}"></script>
 
     <script
         type="text/javascript"
         src="{% static 'django_tables2_column_shifter/js/django_tables2_column_shifter.min.js' %}">
+	</script>
+
+	
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+	<script>
+	$(".js-example-placeholder-single").select2({
+    placeholder: "Select a state",
+    allowClear: true
+});
 	</script>
 	{% endblock %}
 </body>
