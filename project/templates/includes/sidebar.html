@@ -13,7 +13,7 @@
 								<ul class="nav">
 									<li><a href="{% url 'ldap_config_url' %}" class="{% if  '/settings/ldap' in request.path  %}active{% endif %}">LDAP</a></li>
 								
-									<li><a href="page-lockscreen.html" class="{% if  '/settings/qrcode' in request.path  %}active{% endif %}">QR-CODE</a></li>
+									<li><a href="{% url  'qrcode_config_url' %}" class="{% if  '/settings/qrcode' in request.path  %}active{% endif %}">QR-CODE</a></li>
 								</ul>
 							</div>
 						</li>

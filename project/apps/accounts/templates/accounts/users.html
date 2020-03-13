@@ -21,7 +21,14 @@
 
 				<div class="panel-footer">
 					<div class="row">
-						<form>
+						{% if filter %}
+						<form action="" method="get" class="form form-inline">
+							{% bootstrap_form filter.form layout='inline' %}
+							{% bootstrap_button 'filter' %}
+						</form>
+						{% endif %}
+
+						<!-- <form>
 							<div class="">
 								{% comment %} {{ my_filter.form|crispy }} {% endcomment %}
 								{% for filter in my_filter.form%}
@@ -34,7 +41,7 @@
 							<br>
 
 							<p><button type="submit" class="btn btn-primary navbar-btn-right ">Search</button></p>
-						</form>
+						</form> -->
 					</div>
 				</div>
 			</div>
@@ -50,12 +57,7 @@
 				<a href="{% url 'new_user_url'%}" class="btn btn-success">New User</a>
 				<a href="{% url 'sync_ldap_users_url'%}" class="btn btn-primary">Sync Users</a>
 				<hr>
-				{% if filter %}
-				<form action="" method="get" class="form form-inline">
-					{% bootstrap_form filter.form layout='inline' %}
-					{% bootstrap_button 'filter' %}
-				</form>
-				{% endif %}
+			
 
 				{% render_table table %}
 				<!-- {% render_table table 'django_tables2/bootstrap.html' %} -->

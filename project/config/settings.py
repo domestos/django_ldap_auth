@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     'apps.dashboard',
     'apps.equipment',
     'apps.settings.ldap',
-    # 'apps.settings.qrcode',
+    'apps.settings.qrcode',
 
 ]
 
@@ -101,6 +101,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # Загружаем наши настройки при каждом рендеринге шаблона с контекстом
+                'apps.settings.qrcode.context_proccessors.load_settings', 
             ],
         },
     },

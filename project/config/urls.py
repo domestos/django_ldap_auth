@@ -26,6 +26,7 @@ urlpatterns = [
     path('dashboard/', include('apps.dashboard.urls')),
     path('equipment/', include('apps.equipment.urls')),
     path('settings/ldap/', include('apps.settings.ldap.urls')),
+    path('settings/qrcode/', include('apps.settings.qrcode.urls')),
     
 
     # path('', include(router.urls)),

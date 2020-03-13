@@ -16,6 +16,8 @@ from django_filters.views import FilterView
 
 from django.contrib.sessions.models import Session
 from django.contrib.sessions.backends.db import SessionStore
+
+from apps.equipment.qr_generator import run_generate_qr_code
 # Create your views here.
 class EquipmentView(ExportMixin, SingleTableMixin, FilterView):
     model = Equipment
@@ -45,10 +47,15 @@ def  equipment_action(request):
     if action == u'print_qrcode':
         #  rows_updated = qs.update(status=u'done', doneDateTime=datetime.now())
         print("You selected -",  len(selected_rows.split(',')), " rows")
-        # for row in selected_rows:
-        #     print(row)
-
-
+        items =selected_rows.split(',')
+        eqs = Equipment.objects.filter(pk__in=items)
+        print(eqs)
+        run_generate_qr_code(eqs)
+        from django.shortcuts import render
+        return render(request, 'equipment/print_qr.html', {
+                'items': eqs,
+        })
+       
         msg = u'Количество заявок, отмеченных как исполненные - {}.'
         print(msg)
     # elif action == u'cancel':

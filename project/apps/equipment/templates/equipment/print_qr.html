@@ -1,0 +1,84 @@
+{% load static %}
+<!doctype html>
+
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>QR-Code </title>
+    <link href="labels.css" rel="stylesheet" type="text/css">
+    <style>
+        body {
+            /* width: 8.5in;*/
+            width: 8.5in;
+            margin: 0in .1875in;
+            overflow: visible;
+        }
+
+        .label {
+            /* Avery 5160 labels -- CSS and HTML by MM at Boulder Information Services */
+            margin-right: .125in;
+            /* the gutter */
+            margin-bottom: .125in;
+            float: left;
+
+            text-align: center;
+            overflow: hidden;
+
+            font-size: {{qrcode_settings.font_size}}in;
+        
+            outline: 1px dotted;
+            /* outline doesn't occupy space like border does */
+        }
+
+        img {
+
+            /* 5 - кількість стовпців на сторінці
+               0.125 - відступ з права
+               8.5 - ширина А4
+
+               (8.5 - 5 * 0.125) \ 5 = 1.57
+            */
+            /* width:  1.57in;    width="{{qrcode_settings.img_width}}in" */
+            width: {{qrcode_settings.img_width}}in;
+        }
+
+        .page-break {
+            clear: left;
+            display: block;
+            page-break-after: always;
+        }
+
+        .invent-font-size{
+            font-size: {{qrcode_settings.font_size}}in;
+            margin-top:  {{qrcode_settings.inventory_margin_top}}in ;
+        }
+
+        .model-font-size{
+            font-size: {{qrcode_settings.model_font_size}}in;
+        }
+    </style>
+
+</head>
+
+<body>
+    {%for item in items %}
+    <div>
+        {% load static %}
+        <div class="label"><img src="/static/equipment/qr_code/temp/{{ item.id }}.png" />
+            <div class="invent-font-size">{{item.inventory_number}}</div>
+            <!-- Model Visibility -->
+            {% if qrcode_settings.model_visibility %}
+              <div class="model-font-size">{{item.model}}</div>
+            {% endif %}
+            <!-- End Model Visibility -->
+        </div>
+        {%endfor%}
+
+
+        <div class="page-break"></div>
+    </div>
+</body>
+
+</html>

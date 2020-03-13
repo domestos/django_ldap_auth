@@ -18,7 +18,7 @@ class OrderFilter(django_filters.FilterSet):
     # first_name = CharFilter(field_name='first_name', lookup_expr='icontains', widget=TextInput(attrs={'class':'form-control','placeholder': 'first_name'}) )
     # last_name = CharFilter(field_name='last_name', lookup_expr='icontains', widget=TextInput(attrs={'class':'form-control','placeholder': 'last_name'}) )
     # ?department = Select(field_name='department' )
-    position = django_filters.MultipleChoiceFilter(choices=CHOICES, widget=Select2MultipleWidget)
+    # position = django_filters.ChoiceFilter(choices=CHOICES, widget=Select2MultipleWidget)
 
     ordering = django_filters.ChoiceFilter(label="Ordering by when created", choices=CHOICES, method='filter_by_ordering', widget=Select(attrs={'class':'form-control'}))
     # when_created = DateTimeFilter(label="Date", field_name='when_created', lookup_expr='gte', widget=DateTimeInput(attrs={'class': 'form-control datetimepicker'}) )
@@ -37,7 +37,7 @@ class OrderFilter(django_filters.FilterSet):
 
     department = AllValuesMultipleFilter(
         # queryset=Profile.objects.all().values_list('department', flat=True).distinct(),  Select(attrs={'class':'form-control'})
-      widget=Select2MultipleWidget(attrs={'class':'js-example-placeholder-single js-states form-control'})
+         widget=Select2MultipleWidget(attrs={'class':'js-example-placeholder-single js-states form-control'})
     )
     class Meta:
         model = Profile

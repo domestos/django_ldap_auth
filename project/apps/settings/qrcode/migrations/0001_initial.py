@@ -12,14 +12,14 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='LdapConfig',
+            name='QRcodeConfig',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('LDAP_URL', models.CharField(max_length=50)),
-                ('LDAP_USER', models.CharField(max_length=30)),
-                ('LDAP_PASS', models.CharField(max_length=30)),
-                ('LDAP_BASE_DN', models.CharField(max_length=250)),
-                ('LDAP_AUTH', models.BooleanField(default='False')),
+                ('img_width', models.FloatField(default=1.57)),
+                ('font_size', models.FloatField(default=0.25)),
             ],
+            options={
+                'abstract': False,
+            },
         ),
     ]
